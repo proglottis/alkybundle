@@ -6,8 +6,25 @@
 # See accompanying file gpl-3.0.txt or copy at
 #   <http://www.gnu.org/licenses/>
 
+find_package(Qt4 REQUIRED)
+include(${QT_USE_FILE})
+
 set(alkybundle_SRC
 	main.cpp
+	mainwindow.cpp
 )
 
-add_executable(alkybundle ${alkybundle_SRC})
+qt4_wrap_ui(alkybundle_UI
+	mainwindow.ui
+)
+
+qt4_wrap_cpp(alkybundle_MOC
+	mainwindow.hpp
+)
+
+add_executable(alkybundle
+	${alkybundle_SRC}
+	${alkybundle_UI}
+	${alkybundle_MOC}
+)
+target_link_libraries(alkybundle ${QT_LIBRARIES})

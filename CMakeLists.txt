@@ -13,5 +13,12 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules/")
+
+find_package(CxxTest)
+if(CXXTEST_FOUND)
+	include_directories(${CXXTEST_INCLUDE_DIR})
+	enable_testing()
+endif(CXXTEST_FOUND)
 
 add_subdirectory(src)

@@ -27,4 +27,7 @@ add_executable(alkybundle
 	${alkybundle_UI}
 	${alkybundle_MOC}
 )
-target_link_libraries(alkybundle ${QT_LIBRARIES})
+target_link_libraries(alkybundle cocktail ${QT_LIBRARIES})
+
+include_directories(include)
+add_subdirectory(cocktail)

@@ -6,6 +6,4 @@
 # See accompanying file gpl-3.0.txt or copy at
 #   <http://www.gnu.org/licenses/>
 
-include_directories(include)
-add_subdirectory(cocktail)
-add_subdirectory(ui)
+add_subdirectory(qt)

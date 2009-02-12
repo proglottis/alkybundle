@@ -9,6 +9,8 @@
 #include "mainwindow.hpp"
 
 namespace alky {
+namespace ui {
+namespace qt {
 
 MainWindow::MainWindow(QWidget* parent)
 : QMainWindow(parent)
@@ -16,4 +18,6 @@ MainWindow::MainWindow(QWidget* parent)
   setupUi(this);
 }
 
+} // namespace qt
+} // namespace ui
 } // namespace alky

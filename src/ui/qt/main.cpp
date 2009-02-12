@@ -10,7 +10,7 @@
 
 #include "mainwindow.hpp"
 
-using alky::MainWindow;
+using alky::ui::qt::MainWindow;
 
 int main(int argc, char* argv[])
 {

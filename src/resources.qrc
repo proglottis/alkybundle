@@ -1,9 +1,0 @@
-<RCC>
-  <qresource prefix="main" >
-    <file>pixmaps/ingredient.png</file>
-    <file>pixmaps/noimage.png</file>
-    <file>pixmaps/icon.png</file>
-    <file>pixmaps/recipe.png</file>
-    <file>pixmaps/logo.png</file>
-  </qresource>
-</RCC>

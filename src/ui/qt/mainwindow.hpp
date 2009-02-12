@@ -12,6 +12,8 @@
 #include "ui_mainwindow.h"
 
 namespace alky {
+namespace ui {
+namespace qt {
 
 class MainWindow : public QMainWindow, private Ui::MainWindow {
   Q_OBJECT
@@ -20,6 +22,8 @@ public:
   virtual ~MainWindow() {}
 };
 
+} // namespace qt
+} // namespace ui
 } // namespace alky
 
 #endif // ALKY_MAINWINDOW_HPP

@@ -21,6 +21,11 @@ MainWindow::MainWindow(QWidget* parent)
   ingredient_dialog = new IngredientDialog(this);
 }
 
+void MainWindow::showAbout()
+{
+  QMessageBox::about(this, tr("About AlkyBundle"), tr("About AlkyBundle"));
+}
+
 void MainWindow::showAddIngredient()
 {
   ingredient_dialog->show();

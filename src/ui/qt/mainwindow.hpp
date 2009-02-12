@@ -23,6 +23,7 @@ public:
   MainWindow(QWidget *parent = 0);
   virtual ~MainWindow() {}
 public slots:
+  void showAbout();
   void showAddIngredient();
 private:
   IngredientDialog* ingredient_dialog;

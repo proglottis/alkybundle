@@ -8,14 +8,25 @@
 
 #include "mainwindow.hpp"
 
+#include <QMessageBox>
+
 namespace alky {
 namespace ui {
 namespace qt {
 
 MainWindow::MainWindow(QWidget* parent)
-: QMainWindow(parent)
+    : QMainWindow(parent)
 {
   setupUi(this);
+  ingredient_dialog = new IngredientDialog(this);
+}
+
+void MainWindow::showAddIngredient()
+{
+  ingredient_dialog->show();
+  if(ingredient_dialog->exec() == QDialog::Accepted) {
+    QMessageBox::information(this, tr("Accepted"), tr("Accepted"));
+  }
 }
 
 } // namespace qt

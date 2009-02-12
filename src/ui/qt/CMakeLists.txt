@@ -12,14 +12,17 @@ include(${QT_USE_FILE})
 set(alkybundle_SRC
 	main.cpp
 	mainwindow.cpp
+	ingredientdialog.cpp
 )
 
 qt4_wrap_ui(alkybundle_UI
 	mainwindow.ui
+	ingredientdialog.ui
 )
 
 qt4_wrap_cpp(alkybundle_MOC
 	mainwindow.hpp
+	ingredientdialog.hpp
 )
 
 qt4_add_resources(alkybundle_RES

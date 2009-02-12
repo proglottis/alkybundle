@@ -35,25 +35,6 @@ public:
     TS_ASSERT_EQUALS(ingredient.have(), have);
   }
 
-  void testCopyConstruct(void)
-  {
-    Ingredient ing1("Foo", "Bar", true);
-    Ingredient ing2 = ing1;
-    TS_ASSERT_EQUALS(ing1.name(), ing2.name());
-    TS_ASSERT_EQUALS(ing1.description(), ing2.description());
-    TS_ASSERT_EQUALS(ing1.have(), ing2.have());
-  }
-
-  void testCopy(void)
-  {
-    Ingredient ing1("Foo1", "Bar1", true);
-    Ingredient ing2("Foo2", "Bar2", false);
-    ing2 = ing1;
-    TS_ASSERT_EQUALS(ing1.name(), ing2.name());
-    TS_ASSERT_EQUALS(ing1.description(), ing2.description());
-    TS_ASSERT_EQUALS(ing1.have(), ing2.have());
-  }
-
   void testSetDescription(void)
   {
     std::string description = "Foo";

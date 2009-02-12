@@ -18,10 +18,7 @@ class Ingredient {
 public:
   Ingredient(const std::string& name, const std::string& description,
              bool have);
-  Ingredient(const Ingredient& other);
   virtual ~Ingredient() {}
-
-  void operator=(const Ingredient& other);
 
   std::string name() const;
   std::string description() const;
@@ -30,6 +27,10 @@ public:
   void set_description(const std::string& description);
   void set_have(bool have);
 private:
+  Ingredient();
+  Ingredient(const Ingredient&);
+  void operator=(const Ingredient&);
+
   std::string name_;
   std::string description_;
   bool have_;

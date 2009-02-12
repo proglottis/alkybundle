@@ -17,18 +17,6 @@ Ingredient::Ingredient(const std::string& name, const std::string& description,
 {
 }
 
-Ingredient::Ingredient(const Ingredient& other)
-: name_(other.name_), description_(other.description_), have_(other.have_)
-{
-}
-
-void Ingredient::operator=(const Ingredient& other)
-{
-  name_ = other.name_;
-  description_ = other.description_;
-  have_ = other.have_;
-}
-
 std::string Ingredient::name() const
 {
   return name_;

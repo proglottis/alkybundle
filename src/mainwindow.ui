@@ -12,6 +12,10 @@
   <property name="windowTitle" >
    <string>AlkyBundle</string>
   </property>
+  <property name="windowIcon" >
+   <iconset resource="resources.qrc" >
+    <normaloff>:/main/pixmaps/icon.png</normaloff>:/main/pixmaps/icon.png</iconset>
+  </property>
   <widget class="QWidget" name="centralwidget" >
    <layout class="QVBoxLayout" name="verticalLayout" >
     <item>
@@ -19,9 +23,19 @@
       <property name="currentIndex" >
        <number>0</number>
       </property>
+      <property name="iconSize" >
+       <size>
+        <width>32</width>
+        <height>32</height>
+       </size>
+      </property>
       <widget class="QWidget" name="tab" >
        <attribute name="title" >
         <string>&amp;Ingredients</string>
+       </attribute>
+       <attribute name="icon" >
+        <iconset resource="resources.qrc" >
+         <normaloff>:/main/pixmaps/ingredient.png</normaloff>:/main/pixmaps/ingredient.png</iconset>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_2" >
         <item>
@@ -32,6 +46,10 @@
       <widget class="QWidget" name="tab_2" >
        <attribute name="title" >
         <string>&amp;Recipes</string>
+       </attribute>
+       <attribute name="icon" >
+        <iconset resource="resources.qrc" >
+         <normaloff>:/main/pixmaps/recipe.png</normaloff>:/main/pixmaps/recipe.png</iconset>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_3" >
         <item>
@@ -79,7 +97,9 @@
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc" />
+ </resources>
  <connections>
   <connection>
    <sender>actionQuit</sender>

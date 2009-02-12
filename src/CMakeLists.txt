@@ -22,10 +22,15 @@ qt4_wrap_cpp(alkybundle_MOC
 	mainwindow.hpp
 )
 
+qt4_add_resources(alkybundle_RES
+	resources.qrc
+)
+
 add_executable(alkybundle
 	${alkybundle_SRC}
 	${alkybundle_UI}
 	${alkybundle_MOC}
+	${alkybundle_RES}
 )
 target_link_libraries(alkybundle cocktail ${QT_LIBRARIES})
 

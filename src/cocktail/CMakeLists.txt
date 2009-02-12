@@ -8,6 +8,7 @@
 
 add_library(cocktail
 	ingredient.cpp
+	ingredientbuilder.cpp
         measure.cpp
         quantity.cpp
         instructionlist.cpp
@@ -20,6 +21,12 @@ if(CXXTEST_FOUND)
 		${CMAKE_CURRENT_SOURCE_DIR}/ingredient_test.hpp
 	)
 	target_link_libraries(test_cocktail_ingredient cocktail)
+
+	cxxtest_add_test(test_cocktail_ingredientbuilder
+		ingredientbuilder_test.cpp
+		${CMAKE_CURRENT_SOURCE_DIR}/ingredientbuilder_test.hpp
+	)
+	target_link_libraries(test_cocktail_ingredientbuilder cocktail)
 
 	cxxtest_add_test(test_cocktail_measure
 		measure_test.cpp

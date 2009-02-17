@@ -7,5 +7,6 @@
 #   <http://www.gnu.org/licenses/>
 
 include_directories(include)
+add_subdirectory(bundle)
 add_subdirectory(cocktail)
 add_subdirectory(ui)

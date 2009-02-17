@@ -6,21 +6,14 @@
 // See accompanying file gpl-3.0.txt or copy at
 //   <http://www.gnu.org/licenses/>
 
-#ifndef ALKY_COCKTAIL_BUILDERERROR_HPP
-#define ALKY_COCKTAIL_BUILDERERROR_HPP
-
-#include <stdexcept>
+#include "cocktail/buildererror.hpp"
 
 namespace alky {
 namespace cocktail {
 
-class BuilderError : public std::logic_error {
-public:
-  explicit BuilderError(const std::string& what) throw();
-  virtual ~BuilderError() throw() {}
-};
+BuilderError::BuilderError(const std::string& what) throw()
+    : std::logic_error(what)
+{}
 
 } // namespace cocktail
 } // namespace alky
-
-#endif // ALKY_COCKTAIL_BUILDERERROR_HPP

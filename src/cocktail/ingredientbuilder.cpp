@@ -43,7 +43,7 @@ boost::shared_ptr<Ingredient> IngredientBuilder::build()
     throw(BuilderError)
 {
   if(is_missing_name()) {
-    throw(BuilderError());
+    throw(BuilderError("Builder missing name"));
   }
   boost::shared_ptr<Ingredient> ing(new Ingredient(name_, description_,
                                                    have_));

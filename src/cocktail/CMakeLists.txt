@@ -8,6 +8,7 @@
 
 add_library(cocktail
 	ingredient.cpp
+        buildererror.cpp
 	ingredientbuilder.cpp
         measure.cpp
         quantity.cpp

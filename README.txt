@@ -4,6 +4,7 @@ AlkyBundle
 Compiling Mini-Howto
 --------------------
 Prerequisites:
+ * CMake (http://www.cmake.org/)
  * Qt 4 (http://www.qtsoftware.com/)
  * Boost (http://www.boost.org/)
  * CxxTest (Optional, http://cxxtest.com/)

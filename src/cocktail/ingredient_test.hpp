@@ -17,37 +17,42 @@ public:
   void testGetName(void)
   {
     std::string name = "Foo";
-    Ingredient ingredient(name, "", false);
-    TS_ASSERT_EQUALS(ingredient.name(), name);
+    boost::shared_ptr<Ingredient> ingredient(Ingredient::create(name, "",
+                                                                false));
+    TS_ASSERT_EQUALS(ingredient->name(), name);
   }
 
   void testGetDescription(void)
   {
     std::string description = "Foo";
-    Ingredient ingredient("", description, false);
-    TS_ASSERT_EQUALS(ingredient.description(), description);
+    boost::shared_ptr<Ingredient> ingredient(Ingredient::create("",
+                                                                description,
+                                                                false));
+    TS_ASSERT_EQUALS(ingredient->description(), description);
   }
 
   void testGetHave(void)
   {
     bool have = true;
-    Ingredient ingredient("", "", have);
-    TS_ASSERT_EQUALS(ingredient.have(), have);
+    boost::shared_ptr<Ingredient> ingredient(Ingredient::create("", "", have));
+    TS_ASSERT_EQUALS(ingredient->have(), have);
   }
 
   void testSetDescription(void)
   {
     std::string description = "Foo";
-    Ingredient ingredient("", "", false);
-    ingredient.set_description(description);
-    TS_ASSERT_EQUALS(ingredient.description(), description)
+    boost::shared_ptr<Ingredient> ingredient(Ingredient::create("", "",
+                                                                false));
+    ingredient->set_description(description);
+    TS_ASSERT_EQUALS(ingredient->description(), description)
   }
 
   void testSetHave(void)
   {
     bool have = true;
-    Ingredient ingredient("", "", false);
-    ingredient.set_have(have);
-    TS_ASSERT_EQUALS(ingredient.have(), have);
+    boost::shared_ptr<Ingredient> ingredient(Ingredient::create("", "",
+                                                                false));
+    ingredient->set_have(have);
+    TS_ASSERT_EQUALS(ingredient->have(), have);
   }
 };

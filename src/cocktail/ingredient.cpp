@@ -11,35 +11,60 @@
 namespace alky {
 namespace cocktail {
 
-Ingredient::Ingredient(const std::string& name, const std::string& description,
-                       bool have)
-: name_(name), description_(description), have_(have)
-{
-}
+class MemoryIngredient : public Ingredient {
+public:
+  MemoryIngredient(const std::string& name, const std::string& description,
+             bool have)
+      : Ingredient(),
+        name_(name),
+        description_(description),
+        have_(have)
+  {
+  }
 
-std::string Ingredient::name() const
-{
-  return name_;
-}
+  std::string name() const
+  {
+    return name_;
+  }
 
-std::string Ingredient::description() const
-{
-  return description_;
-}
+  std::string description() const
+  {
+    return description_;
+  }
 
-bool Ingredient::have() const
-{
-  return have_;
-}
+  bool have() const
+  {
+    return have_;
+  }
 
-void Ingredient::set_description(const std::string& description)
-{
-  description_ = description;
-}
+  void set_description(const std::string& description)
+  {
+    description_ = description;
+  }
 
-void Ingredient::set_have(bool have)
+  void set_have(bool have)
+  {
+    have_ = have;
+  }
+
+private:
+  MemoryIngredient();
+  MemoryIngredient(const MemoryIngredient&);
+  void operator=(const MemoryIngredient&);
+
+  std::string name_;
+  std::string description_;
+  bool have_;
+};
+
+boost::shared_ptr<Ingredient> Ingredient::create(
+    const std::string& name,
+    const std::string& description,
+    bool have)
 {
-  have_ = have;
+  boost::shared_ptr<Ingredient> ingredient(
+      new MemoryIngredient(name, description, have));
+  return ingredient;
 }
 
 } // namespace cocktail

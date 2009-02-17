@@ -1,4 +1,4 @@
-// Ingredient leaf class.
+// Abstract Ingredient.
 
 // Copyright (C) 2009  James Fargher
 
@@ -11,29 +11,28 @@
 
 #include <string>
 
+#include <boost/shared_ptr.hpp>
+
 namespace alky {
 namespace cocktail {
 
 class Ingredient {
 public:
-  Ingredient(const std::string& name, const std::string& description,
-             bool have);
+  static boost::shared_ptr<Ingredient> create(
+      const std::string& name,
+      const std::string& description,
+      bool have);
+
   virtual ~Ingredient() {}
 
-  std::string name() const;
-  std::string description() const;
-  bool have() const;
+  virtual std::string name() const = 0;
+  virtual std::string description() const = 0;
+  virtual bool have() const = 0;
 
-  void set_description(const std::string& description);
-  void set_have(bool have);
-private:
-  Ingredient();
-  Ingredient(const Ingredient&);
-  void operator=(const Ingredient&);
-
-  std::string name_;
-  std::string description_;
-  bool have_;
+  virtual void set_description(const std::string& description) = 0;
+  virtual void set_have(bool have) = 0;
+protected:
+  Ingredient() {}
 };
 
 } // namespace cocktail

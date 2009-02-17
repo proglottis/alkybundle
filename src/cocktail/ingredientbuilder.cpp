@@ -45,9 +45,7 @@ boost::shared_ptr<Ingredient> IngredientBuilder::build()
   if(is_missing_name()) {
     throw(BuilderError("Builder missing name"));
   }
-  boost::shared_ptr<Ingredient> ing(new Ingredient(name_, description_,
-                                                   have_));
-  return ing;
+  return Ingredient::create(name_, description_, have_);
 }
 
 } // namespace cocktail

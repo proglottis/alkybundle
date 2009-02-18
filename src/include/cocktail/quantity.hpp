@@ -20,10 +20,10 @@ namespace cocktail {
 
 class Quantity {
 public:
-  Quantity(const std::string& name, boost::shared_ptr<Measure> measure);
+  Quantity(const std::wstring& name, boost::shared_ptr<Measure> measure);
   virtual ~Quantity() {}
 
-  std::string name() const;
+  std::wstring name() const;
   boost::shared_ptr<Measure> measure() const;
 
   void set_measure(boost::shared_ptr<Measure> measure);
@@ -32,7 +32,7 @@ private:
   Quantity(const Quantity&);
   void operator=(const Quantity&);
 
-  std::string name_;
+  std::wstring name_;
   boost::shared_ptr<Measure> measure_;
 };
 

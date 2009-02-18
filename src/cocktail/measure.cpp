@@ -11,7 +11,7 @@
 namespace alky {
 namespace cocktail {
 
-Measure::Measure(double value, const std::string& unit)
+Measure::Measure(double value, const std::wstring& unit)
 : value_(value), unit_(unit)
 {
 }
@@ -31,7 +31,7 @@ double Measure::value() const
   return value_;
 }
 
-const std::string& Measure::unit() const
+const std::wstring& Measure::unit() const
 {
   return unit_;
 }

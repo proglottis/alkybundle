@@ -18,7 +18,7 @@ class IngredientBuilderTest : public CxxTest::TestSuite {
 public:
   void testBuildName(void)
   {
-    std::string name = "Foo";
+    std::wstring name = L"Foo";
     IngredientBuilder builder;
     builder.set_name(name);
     boost::shared_ptr<Ingredient> ing = builder.build();
@@ -27,9 +27,9 @@ public:
 
   void testBuildDescription(void)
   {
-    std::string description = "Foo";
+    std::wstring description = L"Foo";
     IngredientBuilder builder;
-    builder.set_name("Bar");
+    builder.set_name(L"Bar");
     builder.set_description(description);
     boost::shared_ptr<Ingredient> ing = builder.build();
     TS_ASSERT_EQUALS(ing->description(), description)
@@ -39,7 +39,7 @@ public:
   {
     bool have = true;
     IngredientBuilder builder;
-    builder.set_name("Bar");
+    builder.set_name(L"Bar");
     builder.set_have(have);
     boost::shared_ptr<Ingredient> ing = builder.build();
     TS_ASSERT_EQUALS(ing->have(), have)
@@ -60,7 +60,7 @@ public:
   void testNameNotMissing(void)
   {
     IngredientBuilder builder;
-    builder.set_name("Foo");
+    builder.set_name(L"Foo");
     TS_ASSERT_EQUALS(builder.is_missing_name(), false);
   }
 };

@@ -11,9 +11,9 @@
 namespace alky {
 namespace cocktail {
 
-Recipe::Recipe(const std::string& name, const std::string& description,
-               const std::string& copyright,
-               const std::string& licence,
+Recipe::Recipe(const std::wstring& name, const std::wstring& description,
+               const std::wstring& copyright,
+               const std::wstring& licence,
                boost::shared_ptr<InstructionList> instructions)
     : name_(name),
       description_(description),
@@ -33,22 +33,22 @@ bool Recipe::operator!=(const Recipe& other) const
   return name_ != other.name_;
 }
 
-std::string Recipe::name() const
+std::wstring Recipe::name() const
 {
   return name_;
 }
 
-std::string Recipe::description() const
+std::wstring Recipe::description() const
 {
   return description_;
 }
 
-std::string Recipe::copyright() const
+std::wstring Recipe::copyright() const
 {
   return copyright_;
 }
 
-std::string Recipe::licence() const
+std::wstring Recipe::licence() const
 {
   return licence_;
 }
@@ -58,17 +58,17 @@ boost::shared_ptr<InstructionList> Recipe::instructions() const
   return instructions_;
 }
 
-void Recipe::set_description(const std::string& description)
+void Recipe::set_description(const std::wstring& description)
 {
   description_ = description;
 }
 
-void Recipe::set_copyright(const std::string& copyright)
+void Recipe::set_copyright(const std::wstring& copyright)
 {
   copyright_ = copyright;
 }
 
-void Recipe::set_licence(const std::string& licence)
+void Recipe::set_licence(const std::wstring& licence)
 {
   licence_ = licence;
 }

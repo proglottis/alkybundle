@@ -18,12 +18,12 @@ IngredientBuilder::IngredientBuilder() throw()
 {
 }
 
-void IngredientBuilder::set_name(const std::string& name) throw()
+void IngredientBuilder::set_name(const std::wstring& name) throw()
 {
   name_ = name;
 }
 
-void IngredientBuilder::set_description(const std::string& description)
+void IngredientBuilder::set_description(const std::wstring& description)
     throw()
 {
   description_ = description;

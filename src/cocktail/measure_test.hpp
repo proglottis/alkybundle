@@ -17,27 +17,27 @@ public:
   void testGetValue(void)
   {
     double value = 4.343;
-    Measure measure(value, "");
+    Measure measure(value, L"");
     TS_ASSERT_EQUALS(measure.value(), value);
   }
 
   void testGetUnit(void)
   {
-    std::string unit = "shot";
+    std::wstring unit = L"shot";
     Measure measure(0.0, unit);
     TS_ASSERT_EQUALS(measure.unit(), unit);
   }
 
   void testEquals(void)
   {
-    Measure m1(1.0, "mL");
-    Measure m2(1.0, "mL");
+    Measure m1(1.0, L"mL");
+    Measure m2(1.0, L"mL");
     TS_ASSERT(m1 == m2);
   }
 
   void testNotEqualsDiffValue(void)
   {
-    std::string unit = "mL";
+    std::wstring unit = L"mL";
     Measure m1(1.0, unit);
     Measure m2(1.1, unit);
     TS_ASSERT(m1 != m2);
@@ -46,8 +46,8 @@ public:
   void testNotEqualsDiffUnit(void)
   {
     double value = 1.0;
-    Measure m1(value, "mL");
-    Measure m2(value, "shot");
+    Measure m1(value, L"mL");
+    Measure m2(value, L"shot");
     TS_ASSERT(m1 != m2);
   }
 };

@@ -13,7 +13,7 @@ namespace cocktail {
 
 class MemoryIngredient : public Ingredient {
 public:
-  MemoryIngredient(const std::string& name, const std::string& description,
+  MemoryIngredient(const std::wstring& name, const std::wstring& description,
              bool have)
       : Ingredient(),
         name_(name),
@@ -22,12 +22,12 @@ public:
   {
   }
 
-  std::string name() const
+  std::wstring name() const
   {
     return name_;
   }
 
-  std::string description() const
+  std::wstring description() const
   {
     return description_;
   }
@@ -37,7 +37,7 @@ public:
     return have_;
   }
 
-  void set_description(const std::string& description)
+  void set_description(const std::wstring& description)
   {
     description_ = description;
   }
@@ -52,14 +52,14 @@ private:
   MemoryIngredient(const MemoryIngredient&);
   void operator=(const MemoryIngredient&);
 
-  std::string name_;
-  std::string description_;
+  std::wstring name_;
+  std::wstring description_;
   bool have_;
 };
 
 boost::shared_ptr<Ingredient> Ingredient::create(
-    const std::string& name,
-    const std::string& description,
+    const std::wstring& name,
+    const std::wstring& description,
     bool have)
 {
   boost::shared_ptr<Ingredient> ingredient(

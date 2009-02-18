@@ -24,8 +24,8 @@ public:
   IngredientBuilder() throw();
   virtual ~IngredientBuilder() throw() {}
 
-  void set_name(const std::string& name) throw();
-  void set_description(const std::string& description) throw();
+  void set_name(const std::wstring& name) throw();
+  void set_description(const std::wstring& description) throw();
   void set_have(bool have) throw();
 
   bool is_missing_name() const throw();
@@ -35,8 +35,8 @@ private:
   IngredientBuilder(const IngredientBuilder&);
   void operator=(const IngredientBuilder&);
 
-  std::string name_;
-  std::string description_;
+  std::wstring name_;
+  std::wstring description_;
   bool have_;
 };
 

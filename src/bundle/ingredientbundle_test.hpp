@@ -26,7 +26,7 @@ public:
   {
     boost::shared_ptr<IngredientBundle> bundle(IngredientBundle::create());
     boost::shared_ptr<Ingredient> ingredient(
-        Ingredient::create("", "", false));
+        Ingredient::create(L"", L"", false));
     bundle->add(ingredient);
     TS_ASSERT_EQUALS(bundle->size(), 1);
   }
@@ -35,7 +35,7 @@ public:
   {
     boost::shared_ptr<IngredientBundle> bundle(IngredientBundle::create());
     boost::shared_ptr<Ingredient> ingredient(
-        Ingredient::create("", "", false));
+        Ingredient::create(L"", L"", false));
     bundle->add(ingredient);
     TS_ASSERT_EQUALS(bundle->at(0), ingredient);
   }
@@ -44,7 +44,7 @@ public:
   {
     boost::shared_ptr<IngredientBundle> bundle(IngredientBundle::create());
     boost::shared_ptr<Ingredient> ingredient(
-        Ingredient::create("", "", false));
+        Ingredient::create(L"", L"", false));
     bundle->add(ingredient);
     boost::shared_ptr<const IngredientBundle> cbundle(bundle);
     TS_ASSERT_EQUALS(cbundle->at(0), ingredient);

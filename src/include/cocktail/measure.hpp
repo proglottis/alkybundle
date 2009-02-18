@@ -16,21 +16,21 @@ namespace cocktail {
 
 class Measure {
 public:
-  Measure(double value, const std::string& unit);
+  Measure(double value, const std::wstring& unit);
   virtual ~Measure() {}
 
   bool operator==(const Measure& other) const;
   bool operator!=(const Measure& other) const;
 
   double value() const;
-  const std::string& unit() const;
+  const std::wstring& unit() const;
 private:
   Measure();
   Measure(const Measure&);
   void operator=(const Measure&);
 
   double value_;
-  std::string unit_;
+  std::wstring unit_;
 };
 
 } // namespace cocktail

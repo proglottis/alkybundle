@@ -17,15 +17,15 @@ namespace cocktail {
 
 class InstructionList {
 public:
-  typedef std::vector<std::string>::iterator iterator;
-  typedef std::vector<std::string>::const_iterator const_iterator;
+  typedef std::vector<std::wstring>::iterator iterator;
+  typedef std::vector<std::wstring>::const_iterator const_iterator;
 
   InstructionList();
   virtual ~InstructionList() {}
 
-  void push_back(const std::string& instruction);
+  void push_back(const std::wstring& instruction);
 
-  std::string operator[](size_t i) const;
+  std::wstring operator[](size_t i) const;
 
   size_t size() const;
 
@@ -38,7 +38,7 @@ private:
   InstructionList(const InstructionList&);
   void operator=(const InstructionList&);
 
-  std::vector<std::string> list_;
+  std::vector<std::wstring> list_;
 };
 
 } // namespace cocktail

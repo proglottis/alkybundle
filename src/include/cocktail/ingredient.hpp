@@ -19,17 +19,17 @@ namespace cocktail {
 class Ingredient {
 public:
   static boost::shared_ptr<Ingredient> create(
-      const std::string& name,
-      const std::string& description,
+      const std::wstring& name,
+      const std::wstring& description,
       bool have);
 
   virtual ~Ingredient() {}
 
-  virtual std::string name() const = 0;
-  virtual std::string description() const = 0;
+  virtual std::wstring name() const = 0;
+  virtual std::wstring description() const = 0;
   virtual bool have() const = 0;
 
-  virtual void set_description(const std::string& description) = 0;
+  virtual void set_description(const std::wstring& description) = 0;
   virtual void set_have(bool have) = 0;
 protected:
   Ingredient() {}

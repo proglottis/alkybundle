@@ -25,15 +25,15 @@ public:
     const size_t LIMIT = 10;
     InstructionList list;
     for(size_t ii=0; ii<LIMIT; ii++) {
-      list.push_back("TEST");
+      list.push_back(L"TEST");
     }
     TS_ASSERT_EQUALS(list.size(), LIMIT);
   }
 
   void testAtConsistancy(void)
   {
-    const char* WORDS[] = {"A", "B", "C", "D"};
-    const size_t LEN = sizeof(WORDS) / sizeof(char*);
+    const wchar_t* WORDS[] = {L"A", L"B", L"C", L"D"};
+    const size_t LEN = sizeof(WORDS) / sizeof(wchar_t*);
     InstructionList list;
     for(size_t ii=0; ii<LEN; ii++) {
       list.push_back(WORDS[ii]);
@@ -45,8 +45,8 @@ public:
 
   void testIteratorConsistancy(void)
   {
-    const char* WORDS[] = {"A", "B", "C", "D"};
-    const size_t LEN = sizeof(WORDS) / sizeof(char*);
+    const wchar_t* WORDS[] = {L"A", L"B", L"C", L"D"};
+    const size_t LEN = sizeof(WORDS) / sizeof(wchar_t*);
     InstructionList list;
     for(size_t ii=0; ii<LEN; ii++) {
       list.push_back(WORDS[ii]);
@@ -61,8 +61,8 @@ public:
   void testConstIteratorConsistancy(void)
   {
     typedef InstructionList::const_iterator citerator;
-    const char* WORDS[] = {"A", "B", "C", "D"};
-    const size_t LEN = sizeof(WORDS) / sizeof(char*);
+    const wchar_t* WORDS[] = {L"A", L"B", L"C", L"D"};
+    const size_t LEN = sizeof(WORDS) / sizeof(wchar_t*);
     InstructionList list;
     for(size_t ii=0; ii<LEN; ii++) {
       list.push_back(WORDS[ii]);

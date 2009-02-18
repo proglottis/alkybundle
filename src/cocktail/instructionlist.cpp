@@ -16,12 +16,12 @@ InstructionList::InstructionList()
 {
 }
 
-void InstructionList::push_back(const std::string& instruction)
+void InstructionList::push_back(const std::wstring& instruction)
 {
   list_.push_back(instruction);
 }
 
-std::string InstructionList::operator[](size_t i) const
+std::wstring InstructionList::operator[](size_t i) const
 {
   return list_[i];
 }

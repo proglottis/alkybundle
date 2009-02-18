@@ -11,12 +11,12 @@
 namespace alky {
 namespace cocktail {
 
-Quantity::Quantity(const std::string& name, boost::shared_ptr<Measure> measure)
+Quantity::Quantity(const std::wstring& name, boost::shared_ptr<Measure> measure)
 : name_(name), measure_(measure)
 {
 }
 
-std::string Quantity::name() const
+std::wstring Quantity::name() const
 {
   return name_;
 }

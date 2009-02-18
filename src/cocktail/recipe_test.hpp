@@ -20,60 +20,60 @@ class RecipeTest : public CxxTest::TestSuite {
 public:
   void testGetName(void)
   {
-    std::string name = "Foo";
-    Recipe recipe(name, "", "", "", EMPTY_INSTRUCTIONS);
+    std::wstring name = L"Foo";
+    Recipe recipe(name, L"", L"", L"", EMPTY_INSTRUCTIONS);
     TS_ASSERT_EQUALS(recipe.name(), name);
   }
 
   void testGetDescription(void)
   {
-    std::string description = "Foo";
-    Recipe recipe("", description, "", "", EMPTY_INSTRUCTIONS);
+    std::wstring description = L"Foo";
+    Recipe recipe(L"", description, L"", L"", EMPTY_INSTRUCTIONS);
     TS_ASSERT_EQUALS(recipe.description(), description);
   }
 
   void testGetCopyright(void)
   {
-    std::string copyright = "Fake Copyright (C) 1900 John Doe";
-    Recipe recipe("", "", copyright, "", EMPTY_INSTRUCTIONS);
+    std::wstring copyright = L"Fake Copyright (C) 1900 John Doe";
+    Recipe recipe(L"", L"", copyright, L"", EMPTY_INSTRUCTIONS);
     TS_ASSERT_EQUALS(recipe.copyright(), copyright);
   }
 
   void testGetLicence(void)
   {
-    std::string licence = "Public Domain";
-    Recipe recipe("", "", "", licence, EMPTY_INSTRUCTIONS);
+    std::wstring licence = L"Public Domain";
+    Recipe recipe(L"", L"", L"", licence, EMPTY_INSTRUCTIONS);
     TS_ASSERT_EQUALS(recipe.licence(), licence);
   }
 
   void testGetInstructions(void)
   {
     boost::shared_ptr<InstructionList> instructions(new InstructionList());
-    instructions->push_back("TEST");
-    Recipe recipe("", "", "", "", instructions);
+    instructions->push_back(L"TEST");
+    Recipe recipe(L"", L"", L"", L"", instructions);
     TS_ASSERT_EQUALS(recipe.instructions(), instructions);
   }
 
   void testSetDescription(void)
   {
-    std::string description = "Foo";
-    Recipe recipe("", "", "", "", EMPTY_INSTRUCTIONS);
+    std::wstring description = L"Foo";
+    Recipe recipe(L"", L"", L"", L"", EMPTY_INSTRUCTIONS);
     recipe.set_description(description);
     TS_ASSERT_EQUALS(recipe.description(), description);
   }
 
   void testSetCopyright(void)
   {
-    std::string copyright = "Fake Copyright (C) 1900 John Doe";
-    Recipe recipe("", "", "", "", EMPTY_INSTRUCTIONS);
+    std::wstring copyright = L"Fake Copyright (C) 1900 John Doe";
+    Recipe recipe(L"", L"", L"", L"", EMPTY_INSTRUCTIONS);
     recipe.set_copyright(copyright);
     TS_ASSERT_EQUALS(recipe.copyright(), copyright);
   }
 
   void testSetLicence(void)
   {
-    std::string licence = "Public Domain";
-    Recipe recipe("", "", "", "", EMPTY_INSTRUCTIONS);
+    std::wstring licence = L"Public Domain";
+    Recipe recipe(L"", L"", L"", L"", EMPTY_INSTRUCTIONS);
     recipe.set_licence(licence);
     TS_ASSERT_EQUALS(recipe.licence(), licence);
   }
@@ -81,25 +81,25 @@ public:
   void testSetInstructions(void)
   {
     boost::shared_ptr<InstructionList> instructions(new InstructionList());
-    instructions->push_back("TEST");
-    Recipe recipe("", "", "", "", EMPTY_INSTRUCTIONS);
+    instructions->push_back(L"TEST");
+    Recipe recipe(L"", L"", L"", L"", EMPTY_INSTRUCTIONS);
     recipe.set_instructions(instructions);
     TS_ASSERT_EQUALS(recipe.instructions(), instructions);
   }
 
   void testEqualsByName(void)
   {
-    std::string name = "Foo";
-    Recipe recipe1(name, "A", "B", "C", EMPTY_INSTRUCTIONS);
-    Recipe recipe2(name, "D", "E", "F", EMPTY_INSTRUCTIONS);
+    std::wstring name = L"Foo";
+    Recipe recipe1(name, L"A", L"B", L"C", EMPTY_INSTRUCTIONS);
+    Recipe recipe2(name, L"D", L"E", L"F", EMPTY_INSTRUCTIONS);
     TS_ASSERT(recipe1 == recipe2);
   }
 
   void testNotEqualsByName(void)
   {
-    std::string other = "Foo";
-    Recipe recipe1("A", other, other, other, EMPTY_INSTRUCTIONS);
-    Recipe recipe2("B", other, other, other, EMPTY_INSTRUCTIONS);
+    std::wstring other = L"Foo";
+    Recipe recipe1(L"A", other, other, other, EMPTY_INSTRUCTIONS);
+    Recipe recipe2(L"B", other, other, other, EMPTY_INSTRUCTIONS);
     TS_ASSERT(recipe1 != recipe2);
   }
 };

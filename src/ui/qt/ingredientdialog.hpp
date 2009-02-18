@@ -9,6 +9,7 @@
 #ifndef ALKY_UI_QT_INGREDIENTDIALOG_HPP
 #define ALKY_UI_QT_INGREDIENTDIALOG_HPP
 
+#include "cocktail/ingredientbuilder.hpp"
 #include "ui_ingredientdialog.h"
 
 namespace alky {
@@ -20,10 +21,15 @@ class IngredientDialog : public QDialog, private Ui::IngredientDialog {
 public:
   IngredientDialog(QWidget *parent = 0);
   virtual ~IngredientDialog() {}
+
+  QString image() const;
 public slots:
+  void set_image(const QString& image);
+  void accept();
   void findImage();
-  void noImage();
+  void clearImage();
 private:
+  alky::cocktail::IngredientBuilder builder_;
   QString image_;
 };
 

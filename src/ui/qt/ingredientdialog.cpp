@@ -9,6 +9,7 @@
 #include "ingredientdialog.hpp"
 
 #include <QFileDialog>
+#include <QMessageBox>
 
 namespace alky {
 namespace ui {
@@ -16,35 +17,67 @@ namespace qt {
 
 IngredientDialog::IngredientDialog(QWidget* parent)
     : QDialog(parent),
+      builder_(),
       image_(QString::Null())
 {
   setupUi(this);
+}
+
+QString IngredientDialog::image() const
+{
+  return image_;
+}
+
+void IngredientDialog::set_image(const QString& filename)
+{
+  QIcon icon;
+  if(filename.isNull()) {
+    icon.addPixmap(QPixmap(QString::fromUtf8(":/main/pixmaps/noimage.png")));
+    noIngredientImage->setEnabled(false);
+  }
+  else {
+    icon.addPixmap(QPixmap(filename));
+    noIngredientImage->setEnabled(true);
+  }
+  ingredientImage->setIcon(icon);
+  image_ = filename;
+}
+
+void IngredientDialog::accept()
+{
+  builder_.set_name(ingredientName->text().toStdWString());
+  builder_.set_have(ingredientHave->checkState() == Qt::Checked);
+  builder_.set_description(
+      ingredientDescription->toPlainText().toStdWString());
+  try {
+    builder_.build();
+    done(QDialog::Accepted);
+  }
+  catch(alky::cocktail::BuilderError e) {
+    QMessageBox::critical(this, tr("Missing name"),
+                          tr("Please enter a name for the ingredient."));
+  }
 }
 
 void IngredientDialog::findImage()
 {
   QString selectedFilter;
   QFileDialog::Options options;
-  QString fileName = QFileDialog::getOpenFileName(this,
-      tr("QFileDialog::getOpenFileName()"),
+  QString fileName = QFileDialog::getOpenFileName(
+      this,
+      tr("Select image"),
       tr(""),
-      tr("Images (*.png *.xpm *.jpg *.jpeg)"),
+      tr("Images (*.jpg *.jpeg *.png *.xpm)"),
       &selectedFilter,
       options);
   if(!fileName.isNull()) {
-    image_ = fileName;
-    ingredientImage->setIcon(QIcon(fileName));
-    noIngredientImage->setEnabled(true);
+    set_image(fileName);
   }
 }
 
-void IngredientDialog::noImage()
+void IngredientDialog::clearImage()
 {
-  noIngredientImage->setEnabled(false);
-  QIcon icon;
-  icon.addPixmap(QPixmap(QString::fromUtf8(":/main/pixmaps/noimage.png")));
-  ingredientImage->setIcon(icon);
-  image_ = QString::Null();
+  set_image(QString::Null());
 }
 
 } // namespace qt

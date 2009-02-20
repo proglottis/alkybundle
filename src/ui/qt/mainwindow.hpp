@@ -11,7 +11,9 @@
 
 #include "ui_mainwindow.h"
 
-#include "ingredientdialog.hpp"
+#include "ingredientdialogfactory.hpp"
+#include "bundle/ingredientbundle.hpp"
+#include "cocktail/ingredientbuilder.hpp"
 
 namespace alky {
 namespace ui {
@@ -20,13 +22,17 @@ namespace qt {
 class MainWindow : public QMainWindow, private Ui::MainWindow {
   Q_OBJECT
 public:
-  MainWindow(QWidget *parent = 0);
+  MainWindow(boost::shared_ptr<alky::bundle::IngredientBundle> ingredients,
+             boost::shared_ptr<IngredientDialogFactory> ingredient_factory,
+             QAbstractListModel* ingredient_model,
+             QWidget *parent = 0);
   virtual ~MainWindow() {}
 public slots:
   void showAbout();
   void showAddIngredient();
 private:
-  IngredientDialog* ingredient_dialog;
+  boost::shared_ptr<alky::bundle::IngredientBundle> ingredients_;
+  boost::shared_ptr<IngredientDialogFactory> ingredient_factory_;
 };
 
 } // namespace qt

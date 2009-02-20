@@ -15,6 +15,8 @@ namespace alky {
 namespace ui {
 namespace qt {
 
+using alky::cocktail::Ingredient;
+
 IngredientDialog::IngredientDialog(QWidget* parent)
     : QDialog(parent),
       builder_(),
@@ -26,6 +28,11 @@ IngredientDialog::IngredientDialog(QWidget* parent)
 QString IngredientDialog::image() const
 {
   return image_;
+}
+
+boost::shared_ptr<Ingredient> IngredientDialog::ingredient()
+{
+  return builder_.build();
 }
 
 void IngredientDialog::set_image(const QString& filename)
@@ -49,14 +56,12 @@ void IngredientDialog::accept()
   builder_.set_have(ingredientHave->checkState() == Qt::Checked);
   builder_.set_description(
       ingredientDescription->toPlainText().toStdWString());
-  try {
-    builder_.build();
-    done(QDialog::Accepted);
-  }
-  catch(alky::cocktail::BuilderError e) {
+  if(builder_.is_missing_name()) {
     QMessageBox::critical(this, tr("Missing name"),
                           tr("Please enter a name for the ingredient."));
+    return;
   }
+  done(QDialog::Accepted);
 }
 
 void IngredientDialog::findImage()

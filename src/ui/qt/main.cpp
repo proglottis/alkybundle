@@ -8,15 +8,19 @@
 
 #include <QApplication>
 
-#include "mainwindow.hpp"
+#include "mainwindowfactory.hpp"
 
 using alky::ui::qt::MainWindow;
+using alky::ui::qt::MainWindowFactory;
 
 int main(int argc, char* argv[])
 {
   QApplication app(argc, argv);
 
-  MainWindow* mainwindow = new MainWindow();
+  MainWindowFactory *factory = new MainWindowFactory();
+  MainWindow* mainwindow = factory->create();
+  delete factory;
+
   mainwindow->show();
 
   return app.exec();

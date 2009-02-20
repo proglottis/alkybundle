@@ -23,6 +23,7 @@ public:
   virtual ~IngredientDialog() {}
 
   QString image() const;
+  boost::shared_ptr<alky::cocktail::Ingredient> ingredient();
 public slots:
   void set_image(const QString& image);
   void accept();

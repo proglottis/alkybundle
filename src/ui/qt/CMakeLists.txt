@@ -12,7 +12,10 @@ include(${QT_USE_FILE})
 set(alkybundle_SRC
 	main.cpp
 	mainwindow.cpp
+	mainwindowfactory.cpp
 	ingredientdialog.cpp
+	ingredientdialogfactory.cpp
+        ingredientmodel.cpp
 )
 
 qt4_wrap_ui(alkybundle_UI
@@ -23,6 +26,7 @@ qt4_wrap_ui(alkybundle_UI
 qt4_wrap_cpp(alkybundle_MOC
 	mainwindow.hpp
 	ingredientdialog.hpp
+        ingredientmodel.hpp
 )
 
 qt4_add_resources(alkybundle_RES
@@ -35,4 +39,4 @@ add_executable(alkybundle
 	${alkybundle_MOC}
 	${alkybundle_RES}
 )
-target_link_libraries(alkybundle cocktail ${QT_LIBRARIES})
+target_link_libraries(alkybundle bundle cocktail ${QT_LIBRARIES})

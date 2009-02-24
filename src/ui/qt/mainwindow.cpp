@@ -37,8 +37,7 @@ void MainWindow::showAddIngredient()
   IngredientDialog* ingredient_dialog = ingredient_factory_->create(this);
   ingredient_dialog->show();
   if(ingredient_dialog->exec() == QDialog::Accepted) {
-    QMessageBox::information(this, tr("Accepted"),
-        QString::fromStdWString(ingredient_dialog->ingredient()->name()));
+    ingredients_->add(ingredient_dialog->ingredient());
   }
 }
 

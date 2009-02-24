@@ -13,6 +13,23 @@
 
 using alky::bundle::IngredientBundle;
 using alky::cocktail::Ingredient;
+using alky::bundle::IngredientBundleListener;
+
+class MockIngredientListener : public IngredientBundleListener {
+public:
+  MockIngredientListener() : added_count_(0) {}
+  void ingredient_added(size_t index, boost::shared_ptr<Ingredient> ingredient)
+  {
+    added_count_++;
+  }
+
+  int added_count() const
+  {
+    return added_count_;
+  }
+private:
+  int added_count_;
+};
 
 class IngredientBundleTest : public CxxTest::TestSuite {
 public:
@@ -48,5 +65,17 @@ public:
     bundle->add(ingredient);
     boost::shared_ptr<const IngredientBundle> cbundle(bundle);
     TS_ASSERT_EQUALS(cbundle->at(0), ingredient);
+  }
+
+  void testAddWithListener(void)
+  {
+    boost::shared_ptr<IngredientBundle> bundle(IngredientBundle::create());
+    boost::shared_ptr<Ingredient> ingredient(
+        Ingredient::create(L"", L"", false));
+    boost::shared_ptr<MockIngredientListener> listener(
+        new MockIngredientListener());
+    bundle->add_listener(listener);
+    bundle->add(ingredient);
+    TS_ASSERT_EQUALS(listener->added_count(), 1);
   }
 };

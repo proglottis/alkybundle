@@ -21,12 +21,11 @@ using alky::cocktail::Ingredient;
 MainWindow *MainWindowFactory::create(QWidget *parent)
 {
   boost::shared_ptr<IngredientBundle> ingBundle(IngredientBundle::create());
-  boost::shared_ptr<Ingredient> ing(Ingredient::create(L"Vodka", L"", false));
-  ingBundle->add(ing);
-  IngredientModel* ingModel = new IngredientModel(ingBundle);
+  boost::shared_ptr<IngredientModel> ingModel(new IngredientModel(ingBundle));
+  ingBundle->add_listener(ingModel);
   boost::shared_ptr<IngredientDialogFactory> ingFac(
       new IngredientDialogFactory());
-  return new DefaultMainWindow(ingBundle, ingFac, ingModel);
+  return new DefaultMainWindow(ingBundle, ingFac, ingModel.get());
 }
 
 } // namespace qt

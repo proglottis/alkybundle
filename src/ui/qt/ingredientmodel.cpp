@@ -76,6 +76,13 @@ QVariant IngredientModel::headerData(int section, Qt::Orientation orientation,
   return QVariant();
 }
 
+void IngredientModel::ingredient_added(size_t index,
+      boost::shared_ptr<alky::cocktail::Ingredient> ingredient)
+{
+  beginInsertRows(QModelIndex(), index, index);
+  endInsertRows();
+}
+
 } // namespace qt
 } // namespace ui
 } // namespace alky

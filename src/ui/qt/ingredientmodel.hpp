@@ -17,7 +17,9 @@ namespace alky {
 namespace ui {
 namespace qt {
 
-class IngredientModel : public QAbstractListModel {
+class IngredientModel
+    : public QAbstractListModel,
+      public alky::bundle::IngredientBundleListener {
   Q_OBJECT
 public:
   enum ColumnType {
@@ -34,6 +36,10 @@ public:
   QVariant data(const QModelIndex& index, int role) const;
   QVariant headerData(int section, Qt::Orientation orientation,
                       int role = Qt::DisplayRole) const;
+  virtual void ingredient_added(size_t index,
+      boost::shared_ptr<alky::cocktail::Ingredient> ingredient);
+signals:
+  void ingredientsAdded(const QModelIndex& parent, int start, int end);
 private:
   boost::shared_ptr<alky::bundle::IngredientBundle> bundle_;
 };

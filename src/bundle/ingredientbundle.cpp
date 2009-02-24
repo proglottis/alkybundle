@@ -17,7 +17,8 @@ class MemIngredientBundle : public IngredientBundle {
 public:
   MemIngredientBundle()
       : IngredientBundle(),
-        list_()
+        list_(),
+        listeners_()
   {
   }
 
@@ -41,11 +42,23 @@ public:
 
   virtual void add(boost::shared_ptr<alky::cocktail::Ingredient> ingredient)
   {
+    std::vector<boost::shared_ptr<IngredientBundleListener> >::iterator it;
     list_.push_back(ingredient);
+    size_t n = list_.size() - 1;
+    for(it=listeners_.begin(); it != listeners_.end(); it++) {
+      (*it)->ingredient_added(n, ingredient);
+    }
+  }
+
+  virtual void add_listener(
+      boost::shared_ptr<IngredientBundleListener> listener)
+  {
+    listeners_.push_back(listener);
   }
 
 private:
   std::vector<boost::shared_ptr<alky::cocktail::Ingredient> > list_;
+  std::vector<boost::shared_ptr<IngredientBundleListener> > listeners_;
 };
 
 boost::shared_ptr<IngredientBundle> IngredientBundle::create()

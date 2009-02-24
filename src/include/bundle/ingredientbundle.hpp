@@ -12,6 +12,7 @@
 #include <boost/shared_ptr.hpp>
 
 #include "cocktail/ingredient.hpp"
+#include "bundle/ingredientbundlelistener.hpp"
 
 namespace alky {
 namespace bundle {
@@ -30,6 +31,9 @@ public:
 
   virtual void add(
       boost::shared_ptr<alky::cocktail::Ingredient> ingredient) = 0;
+
+  virtual void add_listener(
+      boost::shared_ptr<IngredientBundleListener> listener) = 0;
 
 protected:
   IngredientBundle() {}

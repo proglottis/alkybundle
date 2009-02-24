@@ -11,7 +11,7 @@ include(${QT_USE_FILE})
 
 set(alkybundle_SRC
 	main.cpp
-	mainwindow.cpp
+	defaultmainwindow.cpp
 	mainwindowfactory.cpp
 	ingredientdialog.cpp
 	ingredientdialogfactory.cpp
@@ -25,6 +25,7 @@ qt4_wrap_ui(alkybundle_UI
 
 qt4_wrap_cpp(alkybundle_MOC
 	mainwindow.hpp
+	defaultmainwindow.hpp
 	ingredientdialog.hpp
         ingredientmodel.hpp
 )

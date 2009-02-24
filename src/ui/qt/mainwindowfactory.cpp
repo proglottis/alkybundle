@@ -9,6 +9,7 @@
 #include "mainwindowfactory.hpp"
 
 #include "ingredientmodel.hpp"
+#include "defaultmainwindow.hpp"
 
 namespace alky {
 namespace ui {
@@ -25,7 +26,7 @@ MainWindow *MainWindowFactory::create(QWidget *parent)
   IngredientModel* ingModel = new IngredientModel(ingBundle);
   boost::shared_ptr<IngredientDialogFactory> ingFac(
       new IngredientDialogFactory());
-  return new MainWindow(ingBundle, ingFac, ingModel);
+  return new DefaultMainWindow(ingBundle, ingFac, ingModel);
 }
 
 } // namespace qt

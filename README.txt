@@ -7,6 +7,7 @@ Prerequisites:
  * CMake (http://www.cmake.org/)
  * Qt 4 (http://www.qtsoftware.com/)
  * Boost (http://www.boost.org/)
+ * SQLite3 (http://www.sqlite.org/)
  * CxxTest (Optional, http://cxxtest.com/)
 
 Linux (Makefiles):

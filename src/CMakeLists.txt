@@ -9,4 +9,5 @@
 include_directories(.)
 add_subdirectory(bundle)
 add_subdirectory(cocktail)
+add_subdirectory(locale)
 add_subdirectory(ui)

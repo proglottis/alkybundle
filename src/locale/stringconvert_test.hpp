@@ -35,7 +35,8 @@ public:
     boost::shared_ptr<StringConvert> convert(StringConvert::create());
     std::string original("Test");
     std::wstring converted = convert->utf8_to_wide(original);
-    TS_ASSERT_SAME_DATA(converted.c_str(), L"Test", converted.size());
+    TS_ASSERT_SAME_DATA(converted.c_str(), L"Test",
+                        converted.size() * sizeof(wchar_t));
   }
 
   void testUTF8ToWideSanitySize(void)

@@ -22,6 +22,11 @@ public:
   {
   }
 
+  bool operator==(const Ingredient& other) const
+  {
+    return name_ == other.name();
+  }
+
   std::wstring name() const
   {
     return name_;

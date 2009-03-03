@@ -25,6 +25,8 @@ public:
 
   virtual ~Ingredient() {}
 
+  virtual bool operator==(const Ingredient& other) const = 0;
+
   virtual std::wstring name() const = 0;
   virtual std::wstring description() const = 0;
   virtual bool have() const = 0;

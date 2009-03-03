@@ -55,4 +55,15 @@ public:
     ingredient->set_have(have);
     TS_ASSERT_EQUALS(ingredient->have(), have);
   }
+
+  void testEqualsByName(void)
+  {
+    std::wstring name = L"Foo";
+    boost::shared_ptr<Ingredient> ingredient1(Ingredient::create(name, L"A",
+                                                                false));
+    boost::shared_ptr<Ingredient> ingredient2(Ingredient::create(name, L"B",
+                                                                true));
+    TS_ASSERT(*ingredient1 == *ingredient2);
+    TS_ASSERT(ingredient1 != ingredient2);
+  }
 };

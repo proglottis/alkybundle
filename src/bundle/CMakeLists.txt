@@ -8,6 +8,7 @@
 
 add_library(bundle
   ingredientbundle.cpp
+  sqliteingredientbundle.cpp
 )
 
 if(CXXTEST_FOUND)
@@ -15,8 +16,16 @@ if(CXXTEST_FOUND)
 		ingredientbundle_test.cpp
 		${CMAKE_CURRENT_SOURCE_DIR}/ingredientbundle_test.hpp
 	)
-	target_link_libraries(test_bundle_ingredientbundle bundle cocktail)
+	target_link_libraries(test_bundle_ingredientbundle bundle)
+
+	cxxtest_add_test(test_bundle_sqliteingredientbundle
+		sqliteingredientbundle_test.cpp
+		${CMAKE_CURRENT_SOURCE_DIR}/sqliteingredientbundle_test.hpp
+	)
+	target_link_libraries(test_bundle_sqliteingredientbundle bundle)
 endif(CXXTEST_FOUND)
+
+target_link_libraries(bundle cocktail locale)
 
 find_package(Boost COMPONENTS shared_ptr)
 include_directories(${Boost_INCLUDE_DIRS})

@@ -36,8 +36,7 @@ public:
   QVariant data(const QModelIndex& index, int role) const;
   QVariant headerData(int section, Qt::Orientation orientation,
                       int role = Qt::DisplayRole) const;
-  virtual void ingredient_added(size_t index,
-      boost::shared_ptr<alky::cocktail::Ingredient> ingredient);
+  virtual void ingredient_added(size_t index);
 signals:
   void ingredientsAdded(const QModelIndex& parent, int start, int end);
 private:

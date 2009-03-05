@@ -18,8 +18,7 @@ class IngredientBundleListener {
 public:
   virtual ~IngredientBundleListener() {}
 
-  virtual void ingredient_added(size_t index,
-      boost::shared_ptr<alky::cocktail::Ingredient> ingredient) = 0;
+  virtual void ingredient_added(size_t index) = 0;
 protected:
   IngredientBundleListener() {}
 };

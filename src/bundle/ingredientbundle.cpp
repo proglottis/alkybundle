@@ -46,7 +46,7 @@ public:
     list_.push_back(ingredient);
     size_t n = list_.size() - 1;
     for(it=listeners_.begin(); it != listeners_.end(); it++) {
-      (*it)->ingredient_added(n, ingredient);
+      (*it)->ingredient_added(n);
     }
   }
 

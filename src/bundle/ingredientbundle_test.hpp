@@ -18,7 +18,7 @@ using alky::bundle::IngredientBundleListener;
 class MockIngredientListener : public IngredientBundleListener {
 public:
   MockIngredientListener() : added_count_(0) {}
-  void ingredient_added(size_t index, boost::shared_ptr<Ingredient> ingredient)
+  void ingredient_added(size_t index)
   {
     added_count_++;
   }

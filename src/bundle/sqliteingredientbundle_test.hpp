@@ -63,7 +63,7 @@ public:
     TS_ASSERT(*cbundle->at(0) == *ingredient);
   }
 
-  void testAddWithListener(void)
+  void testAddWithListenerCount(void)
   {
     boost::shared_ptr<IngredientBundle> bundle(new SQLiteIngredientBundle(db));
     boost::shared_ptr<Ingredient> ingredient(
@@ -73,6 +73,18 @@ public:
     bundle->add_listener(listener);
     bundle->add(ingredient);
     TS_ASSERT_EQUALS(listener->added_count(), 1);
+  }
+
+  void testAddWithListenerIndex(void)
+  {
+    boost::shared_ptr<IngredientBundle> bundle(new SQLiteIngredientBundle(db));
+    boost::shared_ptr<Ingredient> ingredient(
+        Ingredient::create(L"Test", L"", false));
+    boost::shared_ptr<MockIngredientListener> listener(
+        new MockIngredientListener());
+    bundle->add_listener(listener);
+    bundle->add(ingredient);
+    TS_ASSERT_EQUALS(listener->added_index(), 0);
   }
 private:
   sqlite3* db;

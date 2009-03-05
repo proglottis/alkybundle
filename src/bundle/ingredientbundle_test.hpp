@@ -17,18 +17,25 @@ using alky::bundle::IngredientBundleListener;
 
 class MockIngredientListener : public IngredientBundleListener {
 public:
-  MockIngredientListener() : added_count_(0) {}
+  MockIngredientListener() : added_count_(0), added_index_(0) {}
   void ingredient_added(size_t index)
   {
     added_count_++;
+    added_index_ = index;
   }
 
-  int added_count() const
+  size_t added_count() const
   {
     return added_count_;
   }
+
+  size_t added_index() const
+  {
+    return added_index_;
+  }
 private:
-  int added_count_;
+  size_t added_count_;
+  size_t added_index_;
 };
 
 class IngredientBundleTest : public CxxTest::TestSuite {
@@ -67,7 +74,7 @@ public:
     TS_ASSERT_EQUALS(cbundle->at(0), ingredient);
   }
 
-  void testAddWithListener(void)
+  void testAddWithListenerCount(void)
   {
     boost::shared_ptr<IngredientBundle> bundle(IngredientBundle::create());
     boost::shared_ptr<Ingredient> ingredient(
@@ -77,5 +84,17 @@ public:
     bundle->add_listener(listener);
     bundle->add(ingredient);
     TS_ASSERT_EQUALS(listener->added_count(), 1);
+  }
+
+  void testAddWithListenerIndex(void)
+  {
+    boost::shared_ptr<IngredientBundle> bundle(IngredientBundle::create());
+    boost::shared_ptr<Ingredient> ingredient(
+        Ingredient::create(L"", L"", false));
+    boost::shared_ptr<MockIngredientListener> listener(
+        new MockIngredientListener());
+    bundle->add_listener(listener);
+    bundle->add(ingredient);
+    TS_ASSERT_EQUALS(listener->added_index(), 0);
   }
 };

@@ -188,7 +188,7 @@ void SQLiteIngredientBundle::add(boost::shared_ptr<Ingredient> ingredient)
     }
   }
   sqlite3_finalize(stmt);
-  size_t index = sqlite3_last_insert_rowid(db_);
+  size_t index = sqlite3_last_insert_rowid(db_) - 1;
   std::vector<boost::shared_ptr<IngredientBundleListener> >::iterator it;
   for(it=listeners_.begin(); it!=listeners_.end(); it++) {
     (*it)->ingredient_added(index);

@@ -34,7 +34,3 @@ link_directories(${Boost_LIBRARY_DIRS})
 find_package(SQLite3 REQUIRED)
 include_directories(${SQLite3_INCLUDE_DIRS})
 target_link_libraries(bundle ${SQLite3_LIBRARIES})
-
-find_package(Iconv REQUIRED)
-include_directories(${Iconv_INCLUDE_DIRS})
-target_link_libraries(bundle ${Iconv_LIBRARIES})

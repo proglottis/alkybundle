@@ -33,4 +33,5 @@ if(CXXTEST_FOUND)
 	enable_testing()
 endif(CXXTEST_FOUND)
 
+add_subdirectory(sqlite3)
 add_subdirectory(src)

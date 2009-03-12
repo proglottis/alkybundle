@@ -9,6 +9,9 @@
 #ifndef ALKY_LOCALE_ICONVSTRINGCONVERT_HPP
 #define ALKY_LOCALE_ICONVSTRINGCONVERT_HPP
 
+#include "config.hpp"
+#if defined(ALKY_PLATFORM_LINUX)
+
 #include "locale/stringconvert.hpp"
 
 namespace alky {
@@ -25,5 +28,7 @@ public:
 
 } // namespace locale
 } // namespace alky
+
+#endif // ALKY_PLATFORM
 
 #endif // ALKY_LOCALE_ICONVSTRINGCONVERT_HPP

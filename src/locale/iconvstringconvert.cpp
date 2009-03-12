@@ -6,6 +6,9 @@
 // See accompanying file gpl-3.0.txt or copy at
 //   <http://www.gnu.org/licenses/>
 
+#include "config.hpp"
+#if defined(ALKY_PLATFORM_LINUX)
+
 #include "locale/iconvstringconvert.hpp"
 
 #include <iconv.h>
@@ -51,3 +54,5 @@ std::wstring IconvStringConvert::utf8_to_wide(const std::string& in)
 
 } // namespace locale
 } // namespace alky
+
+#endif // ALKY_PLATFORM

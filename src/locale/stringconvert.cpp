@@ -8,6 +8,7 @@
 
 #include "locale/stringconvert.hpp"
 
+#include "config.hpp"
 #include "locale/iconvstringconvert.hpp"
 
 namespace alky {
@@ -15,7 +16,11 @@ namespace locale {
 
 boost::shared_ptr<StringConvert> StringConvert::create()
 {
+#if defined(ALKY_PLATFORM_LINUX)
   boost::shared_ptr<StringConvert> convert(new IconvStringConvert());
+#else // ALKY_PLATFORM
+#  error No StringConvert implementation on current platform
+#endif // ALKY_PLATFORM
   return convert;
 }
 

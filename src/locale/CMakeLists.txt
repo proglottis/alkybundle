@@ -9,6 +9,7 @@
 add_library(locale
   stringconvert.cpp
   iconvstringconvert.cpp
+  winstringconvert.cpp
 )
 
 if(CXXTEST_FOUND)

@@ -10,3 +10,7 @@ include_directories(.)
 add_library(sqlite3
   sqlite3.c
 )
+
+if(UNIX)
+	target_link_libraries(sqlite3 "pthread" "dl")
+endif(UNIX)

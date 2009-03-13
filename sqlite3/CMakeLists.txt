@@ -7,10 +7,12 @@
 #   <http://www.gnu.org/licenses/>
 
 include_directories(.)
+add_definitions(-DSQLITE_OMIT_LOAD_EXTENSION=1)
 add_library(sqlite3
   sqlite3.c
 )
 
 if(UNIX)
-	target_link_libraries(sqlite3 "pthread" "dl")
+	find_package(Threads REQUIRED)
+	target_link_libraries(sqlite3 "pthread")
 endif(UNIX)

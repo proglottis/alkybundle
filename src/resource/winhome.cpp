@@ -1,4 +1,4 @@
-// Default home directory locator.
+// Windows home directory locator.
 
 // Copyright (C) 2009  James Fargher
 
@@ -6,7 +6,10 @@
 // See accompanying file gpl-3.0.txt or copy at
 //   <http://www.gnu.org/licenses/>
 
-#include "resource/defaulthome.hpp"
+#include "config.hpp"
+#if defined(ALKY_PLATFORM_WINDOWS)
+
+#include "resource/winhome.hpp"
 
 #include <cstddef>
 
@@ -17,16 +20,21 @@ namespace resource {
 
 using alky::locale::StringConvert;
 
-std::wstring DefaultHome::config_dir() const
+std::wstring WinHome::config_dir() const
 {
   boost::shared_ptr<StringConvert> convert(StringConvert::create());
-  char* home;
-  home = std::getenv("HOME");
-  if(home == NULL) {
-    return L"";
+  char* envdata;
+  envdata = std::getenv("APPDATA");
+  if(envdata == NULL) {
+    envdata = std::getenv("HOME");
+    if(envdata == NULL) {
+      return L"";
+    }
   }
-  return convert->utf8_to_wide(home) + L"/.alkybundle";
+  return convert->utf8_to_wide(envdata) + L"\\alkybundle";
 }
 
 } // namespace resource
 } // namespace alky
+
+#endif // ALKY_PLATFORM

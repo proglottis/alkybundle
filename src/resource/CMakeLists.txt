@@ -8,7 +8,8 @@
 
 add_library(resource
   home.cpp
-  defaulthome.cpp
+  linuxhome.cpp
+  winhome.cpp
 )
 
 find_package(Boost COMPONENTS shared_ptr)

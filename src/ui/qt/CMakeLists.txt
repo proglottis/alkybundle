@@ -40,7 +40,7 @@ add_executable(alkybundle
 	${alkybundle_MOC}
 	${alkybundle_RES}
 )
-target_link_libraries(alkybundle bundle cocktail ${QT_LIBRARIES})
+target_link_libraries(alkybundle bundle cocktail resource ${QT_LIBRARIES})
 
 install(TARGETS alkybundle
 	RUNTIME DESTINATION bin

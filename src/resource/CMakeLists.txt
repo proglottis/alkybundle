@@ -6,9 +6,11 @@
 # See accompanying file gpl-3.0.txt or copy at
 #   <http://www.gnu.org/licenses/>
 
-include_directories(.)
-add_subdirectory(bundle)
-add_subdirectory(cocktail)
-add_subdirectory(locale)
-add_subdirectory(resource)
-add_subdirectory(ui)
+add_library(resource
+  home.cpp
+  defaulthome.cpp
+)
+
+find_package(Boost COMPONENTS shared_ptr)
+include_directories(${Boost_INCLUDE_DIRS})
+link_directories(${Boost_LIBRARY_DIRS})
